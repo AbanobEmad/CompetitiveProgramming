@@ -1,0 +1,55 @@
+#include<iostream>
+#include<string>
+#include<vector>
+#include<algorithm>
+#include<set>
+#include<map>
+#include<cmath>
+#include<math.h>
+#include<bitset>
+#include<sstream>
+#include <stdio.h> 
+#include <iomanip>
+#include<queue>'
+#include<fstream>
+//#include <bits/stdc++.h>
+using namespace std;
+void in_out_txt()
+{
+    freopen("input.txt", "rt", stdin);
+    freopen("output.txt", "wt", stdout);
+}
+void ff()
+{
+    std::ios_base::sync_with_stdio(0);
+    cin.tie(NULL); cout.tie(NULL);
+}
+int main()
+{
+    //in_out_txt();
+    ff();
+	long long n,m,x,y,z,v,b,asd[100010],asd1[100010];
+	asd[0]=asd1[0]=0;
+	cin>>n>>asd[1];
+	asd1[1]=asd[1];
+	for(int i=2;i<=n;i++)
+	{
+		cin>>asd1[i];
+		asd[i]=asd[i-1]+asd1[i];
+	}
+	sort(asd1,asd1+n+1);
+	for(int i=1;i<=n;i++)
+	{
+		asd1[i]+=asd1[i-1];
+	}
+	cin>>m;
+	for(int i=0;i<m;i++)
+	{
+		cin>>x>>y>>z;
+		if(x==1)
+			cout<<asd[z]-asd[y-1]<<endl;
+		else
+			cout<<asd1[z]-asd1[y-1]<<endl;
+	}
+   return 0;
+}
